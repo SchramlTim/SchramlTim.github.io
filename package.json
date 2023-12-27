@@ -1,12 +1,15 @@
 {
-  "name": "new-react-app",
+  "name": "schramltim-portfolio",
   "version": "1.0.0",
-  "description": "A new react app without CRA",
+  "description": "Portfolio webpage",
+  "homepage": "https://schramltim.github.io/",
   "main": "./src/index.js",
   "scripts": {
     "start": "webpack-dev-server .",
     "build": "webpack .",
-    "test": "test"
+    "test": "test",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +27,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^26.1.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.31",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.3.0",
