@@ -5,13 +5,13 @@ import { Panel, PanelTitle, PanelContent } from "./components/panel";
 
 const App = () =>{
     return (
-        <div className="flex flex-col font-mono gap-10 h-screen bg-gray-100 text-gray-800 px-5 text-xl"> 
+        <div className="flex flex-col font-mono gap-10 min-h-screen bg-gray-100 text-gray-800 px-5 text-xl"> 
             <div className="flex flex-col items-start justify-center">
-                <div className="flex flex-col text-[5vh] leading-[5vh] sm:text-[10vh] sm:leading-[10vh]">
+                <div className="flex flex-col text-[10vh] leading-[10vh]">
                     <span>Tim</span>
                     <span>Schraml</span>
                 </div>
-                <div className="text-[2.5vh] leading-[2.5vh] sm:text-[5vh] sm:leading-[5vh]">Fullstack Web Engineer</div>
+                <div className="text-[5vh] leading-[5vh]">Fullstack Web Engineer</div>
             </div>
 
             <Panel>
