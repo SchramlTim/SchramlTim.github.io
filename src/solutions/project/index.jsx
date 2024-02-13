@@ -32,7 +32,7 @@ const ProjectAttribute = (props) =>{
 
 const ProjectAttributeList = (props) =>{
     return (
-      <div className={'flex flex-row w-full gap-3'}>
+      <div className={'flex flex-row flex-wrap w-full gap-3'}>
           {props.children}
       </div> 
     )

@@ -9,12 +9,12 @@ const Panel = (props) =>{
 }
 const PanelTitle = (props) =>{
     return (
-      <h2 className="text-3xl font-bold uppercase">{props.children}</h2>
+      <h2 className="text-3xl font-bold uppercase mb-3">{props.children}</h2>
     )
 }
 const PanelContent = (props) =>{
     return (
-      <div className={'text-gray-500'}>
+      <div className={''}>
           {props.children}
       </div> 
     )

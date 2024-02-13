@@ -7,7 +7,7 @@ import { Project, ProjectAttribute, ProjectAttributeList, ProjectDescription, Pr
 const App = () =>{
     return (
         <div className="flex justify-center bg-gray-100 px-10 pb-10">
-            <div className="flex flex-col font-mono gap-10 md:w-2/3 min-h-screen  text-gray-800 text-lg"> 
+            <div className="flex flex-col font-mono gap-10 w-full lg:w-2/3 2xl:w-1/2 min-h-screen  text-gray-800 text-lg"> 
                 <div className="flex flex-col items-start justify-center">
                     <div className="flex flex-col text-7xl sm:text-[8vh] sm:leading-[8vh]">
                         <span>Tim</span> 
@@ -17,9 +17,9 @@ const App = () =>{
                 </div>
 
                 <Panel>
-                    <PanelTitle>About me</PanelTitle>
+                    <PanelTitle>> About me</PanelTitle>
                     <PanelContent>
-                        <div className="flex flex-col sm:flex-row">
+                        <div className="flex flex-col sm:flex-row text-gray-500">
                             <div className="flex flex-col gap-3 sm:w-1/2">
                                 <p>Passionate full-stack developer committed to mission-driven work, with a focus on thoughtful UI design, collaboration, and a dedication to teaching.</p>
                                 <p>I was already fascinated by computers as a child, loved puzzles and logical games, so I made these things my profession</p>
@@ -31,30 +31,37 @@ const App = () =>{
                         </div>
                     </PanelContent>
                 </Panel> 
-                <Project link={'https://github.com/SchramlTim/taberu'}>
-                    <ProjectTitle>Taberu 🍱</ProjectTitle>
-                    <ProjectDescription>
-                        Taberu is about simplifying food ordering within an organization. 
-                    </ProjectDescription>
-                    <ProjectAttributeList>
-                        <ProjectAttribute>PHP</ProjectAttribute>
-                        <ProjectAttribute>REST API</ProjectAttribute>
-                        <ProjectAttribute>React</ProjectAttribute>
-                        <ProjectAttribute>Tailwind</ProjectAttribute>
-                        <ProjectAttribute>Vercel</ProjectAttribute>
-                    </ProjectAttributeList>
-                </Project> 
-                <Project link={'https://github.com/SchramlTim/schramltim.github.io'}>
-                    <ProjectTitle>Portfolio website 🎨</ProjectTitle>
-                    <ProjectDescription>
-                        Just a small portfolio website where I try things out
-                    </ProjectDescription>
-                    <ProjectAttributeList>
-                        <ProjectAttribute>React</ProjectAttribute>
-                        <ProjectAttribute>Tailwind</ProjectAttribute>
-                        <ProjectAttribute>Three.js</ProjectAttribute>
-                    </ProjectAttributeList>
-                </Project> 
+                <Panel>
+                    <PanelTitle>> Projects</PanelTitle>
+                    <PanelContent>
+                        <div className="flex flex-col gap-10">
+                            <Project link={'https://github.com/SchramlTim/taberu'}>
+                                <ProjectTitle>Taberu 🍱</ProjectTitle>
+                                <ProjectDescription>
+                                    Taberu is about simplifying food ordering within an organization. 
+                                </ProjectDescription>
+                                <ProjectAttributeList>
+                                    <ProjectAttribute>PHP</ProjectAttribute>
+                                    <ProjectAttribute>REST API</ProjectAttribute>
+                                    <ProjectAttribute>React</ProjectAttribute>
+                                    <ProjectAttribute>Tailwind</ProjectAttribute>
+                                    <ProjectAttribute>Vercel</ProjectAttribute>
+                                </ProjectAttributeList>
+                            </Project> 
+                            <Project link={'https://github.com/SchramlTim/schramltim.github.io'}>
+                                <ProjectTitle>Portfolio website 🎨</ProjectTitle>
+                                <ProjectDescription>
+                                    Just a small portfolio website where I try things out
+                                </ProjectDescription>
+                                <ProjectAttributeList>
+                                    <ProjectAttribute>React</ProjectAttribute>
+                                    <ProjectAttribute>Tailwind</ProjectAttribute>
+                                    <ProjectAttribute>Three.js</ProjectAttribute>
+                                </ProjectAttributeList>
+                            </Project> 
+                        </div>
+                    </PanelContent>
+                </Panel>
             </div>
         </div>
     )
