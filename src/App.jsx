@@ -6,7 +6,7 @@ import { Project, ProjectAttribute, ProjectAttributeList, ProjectDescription, Pr
 
 const App = () =>{
     return (
-        <div className="flex justify-center bg-gray-100 px-10">
+        <div className="flex justify-center bg-gray-100 px-10 pb-10">
             <div className="flex flex-col font-mono gap-10 md:w-2/3 min-h-screen  text-gray-800 text-lg"> 
                 <div className="flex flex-col items-start justify-center">
                     <div className="flex flex-col text-7xl sm:text-[8vh] sm:leading-[8vh]">
