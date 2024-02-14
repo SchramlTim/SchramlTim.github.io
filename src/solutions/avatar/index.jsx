@@ -1,84 +1,138 @@
 import * as THREE from 'three';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import React from 'react';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+function easeOutCirc(x) {
+  return Math.sqrt(1 - Math.pow(x - 1, 4))
+}
+
 const Avatar = () => {
   const refContainer = useRef(null);
-  useEffect(() => {
-    const loader = new OBJLoader();
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer( { alpha: true });
-    renderer.shadowMap.enabled = true
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap
-    camera.position.set( 2, 23, 25 );
-    camera.rotation.set(-0.10,0.2, 0.02)
-    const resolution = Math.min(300, window.innerWidth / 2)
-    renderer.setSize( resolution, resolution);
-    refContainer.current && refContainer.current.appendChild( renderer.domElement );
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 3)
-    scene.add(hemiLight)
+  const refRenderer = useRef()
 
-    const light = new THREE.DirectionalLight(0xffffff, Math.PI)
-    light.position.set(1,10,10);
-    light.castShadow = true
-    light.shadow.mapSize.width = 512
-    light.shadow.mapSize.height = 512
-    light.shadow.camera.near = 0.5
-    light.shadow.camera.far = 100
-    scene.add(light)
+  const handleWindowResize = useCallback(() => {
+    const { current: renderer } = refRenderer
+    const { current: container } = refContainer
+    if (container && renderer) {
+      const scW = container.clientWidth
+      const scH = container.clientWidth
 
-    const planeGeometry = new THREE.PlaneGeometry(100, 20)
-    const plane = new THREE.Mesh(planeGeometry, new THREE.MeshPhongMaterial())
-    plane.rotateX(-Math.PI / 2)
-    plane.position.y = -1.75
-    plane.receiveShadow = true
-    //scene.add(plane)
-
-    const helper = new THREE.CameraHelper(light.shadow.camera)
-    //scene.add(helper)
-    
-    window.addEventListener( 'resize', onWindowResize, false );
-
-    function onWindowResize(){
-        console.log('resize')
-        camera.updateProjectionMatrix();
-        const resolution = Math.min(300, window.innerWidth / 2)
-        renderer.setSize( resolution, resolution);
-    
+      renderer.setSize(scW, scH)
     }
+  }, [])
 
+  useEffect(() => {
+    const loader = new OBJLoader()
+    const { current: container } = refContainer
+    if (container) {
+      const scW = container.clientWidth
+      const scH = container.clientWidth
 
-    loader.load(
-        './Char_Export.obj',
-        function ( object ) {
-            object.traverse(n => { if ( n.isMesh ) {
-              n.castShadow = true; 
-              n.receiveShadow = true;
-              if(n.material.map) n.material.map.anisotropy = 16; 
-            }});
-            scene.add( object );
-            function animate() {
-                requestAnimationFrame( animate );
-                renderer.render( scene, camera );
-            } 
-            animate()
-        },
-        function ( xhr ) {
-            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-        },
-        function ( error ) {
-            console.log( 'An error happened', error );
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+      })
+      renderer.setPixelRatio(window.devicePixelRatio)
+      renderer.setSize(scW, scH)
+      renderer.outputEncoding = THREE.sRGBEncoding
+      container.appendChild(renderer.domElement)
+      refRenderer.current = renderer
+      const scene = new THREE.Scene()
+
+      const target = new THREE.Vector3(-0.5, 1.2, 0)
+      const initialCameraPosition = new THREE.Vector3(
+        40 * Math.sin(0.2 * Math.PI),
+        20,
+        40 * Math.cos(0.2 * Math.PI)
+      )
+
+      // 640 -> 240
+      // 8   -> 6
+      const scale = scH * 0.015 + 20.8
+      const camera = new THREE.OrthographicCamera(
+        -scale,
+        scale,
+        scale + 20,
+        -scale,
+        0.01,
+        50000
+      )
+      camera.position.copy(initialCameraPosition)
+      camera.lookAt(target)
+
+      const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI)
+      scene.add(ambientLight)
+
+      const controls = new OrbitControls(camera, renderer.domElement)
+      controls.autoRotate = false 
+      controls.enablePan = false
+      controls.enableZoom = false
+      controls.target = target
+      loader.load(
+          './Char_Export.obj',
+          function ( object ) {
+              object.receiveShadow = true 
+              object.castShadow = true 
+              object.traverse(n => { if ( n.isMesh ) {
+                n.castShadow = true; 
+                n.receiveShadow = true;
+                if(n.material.map) n.material.map.anisotropy = 16; 
+              }});
+              scene.add( object );
+              animate()
+              object.geometry.center()
+              console.log(object)
+          },
+          function ( xhr ) {
+              console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+          },
+          function ( error ) {
+              console.log( 'An error happened', error );
+          }
+      )
+      let req = null
+      let frame = 0
+      const animate = () => {
+        req = requestAnimationFrame(animate)
+
+        frame = frame <= 100 ? frame + 1 : frame
+
+        if (frame <= 100) {
+          const p = initialCameraPosition
+          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
+
+          camera.position.y = 10
+          camera.position.x =
+            p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
+          camera.position.z =
+            p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
+          camera.lookAt(target)
+        } else {
+          controls.update()
         }
-    ); 
+
+        renderer.render(scene, camera)
+      }
+    } 
+
+
+
+
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize, false)
+    return () => {
+      window.removeEventListener('resize', handleWindowResize, false)
+    }
+  }, [handleWindowResize])
 
   //return (<div></div>)
 
   return (
-    <div ref={refContainer}></div>
+    <div className={'min-w-[300px] w-full'} ref={refContainer}></div>
   );
 }
 
