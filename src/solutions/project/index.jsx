@@ -24,7 +24,7 @@ const ProjectDescription = (props) =>{
 
 const ProjectAttribute = (props) =>{
     return (
-      <div className={'text-sm font-bold uppercase px-2 py-1 rounded-lg bg-gray-400'}>
+      <div className={'text-sm font-bold lowercase px-2 py-1 rounded-lg bg-gray-400'}>
           {props.children}
       </div> 
     )

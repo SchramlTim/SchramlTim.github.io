@@ -41,20 +41,20 @@ const Avatar = () => {
       refRenderer.current = renderer
       const scene = new THREE.Scene()
 
-      const target = new THREE.Vector3(-0.5, 1.2, 0)
+      const target = new THREE.Vector3(1, 12, 0)
       const initialCameraPosition = new THREE.Vector3(
-        40 * Math.sin(0.2 * Math.PI),
-        20,
-        40 * Math.cos(0.2 * Math.PI)
+        60 * Math.sin(0.2 * Math.PI),
+        40,
+        60 * Math.cos(0.2 * Math.PI)
       )
 
       // 640 -> 240
       // 8   -> 6
-      const scale = scH * 0.015 + 20.8
+      const scale = scH * 0.015 + 10.8
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
-        scale + 20,
+        scale + 10,
         -scale,
         0.01,
         50000
@@ -66,7 +66,7 @@ const Avatar = () => {
       scene.add(ambientLight)
 
       const controls = new OrbitControls(camera, renderer.domElement)
-      controls.autoRotate = false 
+      controls.autoRotate = true 
       controls.enablePan = false
       controls.enableZoom = false
       controls.target = target
@@ -75,6 +75,7 @@ const Avatar = () => {
           function ( object ) {
               object.receiveShadow = true 
               object.castShadow = true 
+              object.position.x = 5
               object.traverse(n => { if ( n.isMesh ) {
                 n.castShadow = true; 
                 n.receiveShadow = true;
@@ -82,8 +83,6 @@ const Avatar = () => {
               }});
               scene.add( object );
               animate()
-              object.geometry.center()
-              console.log(object)
           },
           function ( xhr ) {
               console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
@@ -103,7 +102,7 @@ const Avatar = () => {
           const p = initialCameraPosition
           const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
 
-          camera.position.y = 10
+          camera.position.y = 20
           camera.position.x =
             p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
           camera.position.z =
