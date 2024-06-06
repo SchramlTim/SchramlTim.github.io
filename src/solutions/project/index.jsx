@@ -10,7 +10,7 @@ const Project = (props) => {
 
 const ProjectTitle = (props) =>{
     return (
-      <h2 className="text-3xl font-bold uppercase">{props.children}</h2>
+      <h2 className="text-xl font-bold uppercase">{props.children}</h2>
     )
 }
 
