@@ -2,9 +2,9 @@ import React from "react";
 
 const Panel = (props) =>{
     return (
-      <div className={props.className || ''}>
+      <section className={props.className || undefined}>
         {props.children}
-      </div>
+      </section>
     )
 }
 const PanelTitle = (props) =>{
@@ -14,9 +14,9 @@ const PanelTitle = (props) =>{
 }
 const PanelContent = (props) =>{
     return (
-      <div className={props.className || ''}>
+      <p className={props.className || undefined}>
           {props.children}
-      </div> 
+      </p> 
     )
 }
 
