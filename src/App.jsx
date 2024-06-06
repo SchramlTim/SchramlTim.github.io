@@ -17,7 +17,7 @@ const App = () =>{
                       <span className="text-[5vw] sm:text-[4vw] md:text-[3vw]  lg:text-[2vw] leading-none">// fullstack web engineer</span>
                     </h1>
                 </header>
-                <main>
+                <main className="flex flex-col gap-10">
                   <Panel>
                       <PanelTitle className="text-gray-600">// about_me</PanelTitle>
                       <PanelContent className="lowercase">
