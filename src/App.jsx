@@ -2,7 +2,7 @@ import Avatar from "./solutions/avatar";
 import React from 'react';
 import { Panel, PanelTitle, PanelContent } from "./components/panel";
 import { Project, ProjectAttribute, ProjectAttributeList, ProjectDescription, ProjectTitle } from "./solutions/project";
-
+import StackIcon from "tech-stack-icons";
 
 const App = () =>{
     return (
@@ -33,6 +33,41 @@ const App = () =>{
                           </div>
                       </PanelContent>
                   </Panel> 
+                  <Panel>
+                      <PanelTitle className="text-gray-600">// main_stack</PanelTitle>
+                      <PanelContent className="lowercase">
+                          <div className="flex flex-wrap gap-5">
+                            <StackIcon name="github" className="w-2/12" />
+                            <StackIcon name="git" className="w-2/12" />
+                            <StackIcon name="php" className="w-2/12" />
+                            <StackIcon name="swagger" className="w-2/12" />
+                            <StackIcon name="redis" className="w-2/12" />
+                            <StackIcon name="docker" className="w-2/12" />
+                            <StackIcon name="bash" className="w-2/12" />
+                            <StackIcon name="mysql" className="w-2/12" />
+                            <StackIcon name="cypress" className="w-2/12" />
+                            <StackIcon name="nodejs" className="w-2/12" />
+                            <StackIcon name="tailwindcss" className="w-2/12" />
+                          </div>
+                      </PanelContent>
+                  </Panel>
+                  <Panel>
+                      <PanelTitle className="text-gray-600">// interested_in</PanelTitle>
+                      <PanelContent className="lowercase">
+                          <div className="flex flex-wrap gap-5">
+                            <StackIcon name="neovim" className="w-2/12" />
+                            <StackIcon name="kubernetes" className="w-2/12" />
+                            <StackIcon name="bunjs" className="w-2/12" />
+                            <StackIcon name="cloudflare" className="w-2/12" />
+                            <StackIcon name="figma" className="w-2/12" />
+                            <StackIcon name="gcloud" className="w-2/12" />
+                            <StackIcon name="supabase" className="w-2/12" />
+                            <StackIcon name="go" className="w-2/12" />
+                            <StackIcon name="postgresql" className="w-2/12" />
+                            <StackIcon name="qwik" className="w-2/12" />
+                          </div>
+                      </PanelContent>
+                  </Panel>
                   <Panel>
                       <PanelTitle className="text-gray-600">// personal_projects</PanelTitle>
                       <PanelContent className="lowercase">

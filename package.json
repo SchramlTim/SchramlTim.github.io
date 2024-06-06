@@ -8,8 +8,8 @@
     "start": "webpack-dev-server .",
     "build": "webpack .",
     "test": "test",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d public"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "author": "",
   "license": "ISC",
@@ -41,8 +41,9 @@
   "dependencies": {
     "@babel/cli": "^7.17.0",
     "path": "^0.12.7",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tech-stack-icons": "^2.0.3",
     "three": "^0.159.0"
   }
 }
