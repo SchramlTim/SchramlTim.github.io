@@ -6,18 +6,19 @@ import { Project, ProjectAttribute, ProjectAttributeList, ProjectDescription, Pr
 
 const App = () =>{
     return (
-        <div className="flex justify-center bg-gray-100 p-10">
-            <div className="flex flex-col font-mono gap-10 w-full lg:w-2/3 2xl:w-1/2 min-h-screen  text-gray-800 text-lg"> 
-                <div className="flex flex-col items-start justify-center">
-                    <div className="flex flex-row text-4xl sm:text-[7vh] sm:leading-[7vh] text-emerald-500">
-                        <span>timSchraml</span><span className="text-gray-800">();</span> 
+        <div className="flex justify-center bg-gray-100 p-5 pt-10 sm:p-10">
+            <div className="flex flex-col font-mono gap-10 w-full lg:w-2/3 2xl:w-1/2 min-h-screen text-gray-600 text-lg"> 
+                <div className="flex flex-col items-start justify-center gap-3">
+                    <div className="flex gap-x-3 flex-wrap text-[11vw] sm:text-[7vw] lg:text-[5vw] leading-none">
+                        <span className='text-orange-500'>public function</span>
+                        <span className='text-emerald-500'>tim_schraml<span className="text-gray-600">()</span></span>
                     </div>
-                    <div className="text-2xl leading-xl sm:text-[3vh] sm:leading-[3vh]">Fullstack Web Engineer</div>
+                    <div className="text-[7vw] sm:text-[4vw] md:text-[3vw] leading-none">// fullstack web engineer</div>
                 </div>
 
                 <Panel>
-                    <PanelTitle className="text-orange-500"> About me</PanelTitle>
-                    <PanelContent>
+                    <PanelTitle className="text-gray-600">// about_me</PanelTitle>
+                    <PanelContent className="lowercase">
                         <div className="flex flex-col sm:flex-row text-gray-500">
                             <div className="flex flex-col gap-3 sm:w-1/2">
                                 <p>Passionate full-stack developer committed to mission-driven work, with a focus on thoughtful UI design, collaboration, and a dedication to teaching.</p>
@@ -31,8 +32,8 @@ const App = () =>{
                     </PanelContent>
                 </Panel> 
                 <Panel>
-                    <PanelTitle className="text-orange-500">Projects</PanelTitle>
-                    <PanelContent>
+                    <PanelTitle className="text-gray-600">// personal_projects</PanelTitle>
+                    <PanelContent className="lowercase">
                         <div className="flex flex-col gap-10">
                             <Project link={'https://github.com/SchramlTim/taberu'}>
                                 <ProjectTitle>Taberu 🍱</ProjectTitle>

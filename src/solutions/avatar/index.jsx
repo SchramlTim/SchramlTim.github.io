@@ -69,6 +69,7 @@ const Avatar = () => {
       controls.autoRotate = true 
       controls.enablePan = false
       controls.enableZoom = false
+      controls.enabled = false
       controls.target = target
       loader.load(
           './Char_Export.obj',
@@ -131,7 +132,7 @@ const Avatar = () => {
   //return (<div></div>)
 
   return (
-    <div className={'min-w-[300px] w-full'} ref={refContainer}></div>
+    <div className={'w-full'} ref={refContainer}></div>
   );
 }
 
