@@ -12,7 +12,7 @@ const App = () =>{
                 <header className="flex flex-col items-start justify-center gap-3">
                     <h1>
                       <span className="flex gap-x-3 flex-wrap text-[11vw] sm:text-[7vw] lg:text-[5vw] leading-none">
-                          <span className='text-orange-500'>public function</span>
+                        <span className='flex flex-wrap gap-x-3 text-orange-500'><span>public</span><span>function</span></span>
                           <span className='text-emerald-500'>tim_schraml<span className="text-gray-600">()</span></span>
                       </span>
                       <span className="text-[5vw] sm:text-[4vw] md:text-[3vw]  lg:text-[2vw] leading-none">// fullstack web engineer</span>
@@ -37,7 +37,7 @@ const App = () =>{
                   <Panel>
                       <PanelTitle className="text-gray-600">// main_stack</PanelTitle>
                       <PanelContent className="lowercase">
-                          <div className="flex flex-wrap gap-5 justify-start">
+                          <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 gap-5">
                             <StatusIcon name="github" status="daily use" />
                             <StatusIcon name="git" status="daily use" />
                             <StatusIcon name="php" status="daily use" />
@@ -49,28 +49,29 @@ const App = () =>{
                             <StatusIcon name="cypress" status="daily use" />
                             <StatusIcon name="nodejs" status="daily use" />
                             <StatusIcon name="tailwindcss" status="daily use" />
+                            <StatusIcon name="reactjs" status="daily use" />
                           </div>
                       </PanelContent>
                   </Panel>
                   <Panel>
                       <PanelTitle className="text-gray-600">// interested_in</PanelTitle>
                       <PanelContent className="lowercase">
-                          <div className="flex flex-wrap gap-5">
+                          <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 gap-5">
                             <StatusIcon name="neovim" status="already used" />
                             <StatusIcon name="kubernetes" status="already used" />
+                            <StatusIcon name="gcloud" status="playing around"  />
+                            <StatusIcon name="supabase" status="playing around"  />
+                            <StatusIcon name="postgresql" status="playing around"  />
                             <StatusIcon name="bunjs" status="interested" />
                             <StatusIcon name="cloudflare" status="interested"  />
                             <StatusIcon name="figma" status="interested"  />
-                            <StatusIcon name="gcloud" status="playing around"  />
-                            <StatusIcon name="supabase" status="playing around"  />
                             <StatusIcon name="go" status="interested"  />
-                            <StatusIcon name="postgresql" status="playing around"  />
                             <StatusIcon name="qwik" status="interested"  />
                           </div>
                       </PanelContent>
                   </Panel>
                   <Panel>
-                      <PanelTitle className="text-gray-600">// personal_projects</PanelTitle>
+                      <PanelTitle className="text-gray-600">// projects</PanelTitle>
                       <PanelContent className="lowercase">
                           <div className="flex flex-col gap-10">
                               <Project link={'https://github.com/SchramlTim/taberu'}>

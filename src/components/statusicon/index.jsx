@@ -25,16 +25,16 @@ const StatusIcon = (props) => {
   console.log(statusMapping[props.status])
 
   const coloredSteps = new Array(statusMapping[props.status]?.count || 0).fill(null).map(() => { 
-    return <li className={`w-2 h-1 rounded ${statusMapping[props.status]?.color}`}></li>
+    return <li className={`w-1/6 h-1 rounded ${statusMapping[props.status]?.color}`}></li>
   }) 
 
   const graySteps = new Array(4 - statusMapping[props.status]?.count || 0).fill(null).map(() => { 
-    return <li className={`w-2 h-1 rounded bg-gray-500`}></li>
+    return <li className={`w-1/6 h-1 rounded bg-gray-500`}></li>
   }) 
 
     return (
-      <i className={`flex flex-col w-2/12 md:w-[10%] items-center text-xs ${props.className || ''}`}>
-        <StackIcon name={props.name} /> 
+      <i className={`flex flex-col gap-1 w-full items-center text-xs ${props.className || ''}`}>
+        <StackIcon name={props.name} className="aspect-square" /> 
         <span>{props.name}</span>
         {props.status &&
           <>
@@ -42,7 +42,7 @@ const StatusIcon = (props) => {
               {coloredSteps}
               {graySteps}
             </ol>
-            <span className="text-center text-[0.5rem]">{props.status}</span>
+            <span className="text-center text-[0.5rem] leading-3">{props.status}</span>
           </>
         }
       </i>
