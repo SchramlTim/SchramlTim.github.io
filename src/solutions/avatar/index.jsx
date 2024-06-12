@@ -137,7 +137,7 @@ const Avatar = () => {
 
   return (
     <div className='w-full h-full relative'>
-      <div className="absolute inset-0" onClick={() => trigger()}>Bla</div>
+      <div className="absolute inset-0" onClick={() => trigger()}></div>
       <div className={'w-full'} ref={refContainer}></div>
     </div>
   );
