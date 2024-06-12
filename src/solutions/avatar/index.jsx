@@ -11,6 +11,8 @@ function easeOutCirc(x) {
 const Avatar = () => {
   const refContainer = useRef(null);
   const refRenderer = useRef()
+  const refFrame = useRef(0)
+  let frame = 0
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -93,7 +95,6 @@ const Avatar = () => {
           }
       )
       let req = null
-      let frame = 0
       const animate = () => {
         req = requestAnimationFrame(animate)
 
@@ -129,10 +130,16 @@ const Avatar = () => {
     }
   }, [handleWindowResize])
 
-  //return (<div></div>)
+
+  const trigger = () => {
+    frame = 0 
+  }
 
   return (
-    <div className={'w-full'} ref={refContainer}></div>
+    <div className='w-full h-full relative'>
+      <div className="absolute inset-0" onClick={() => trigger()}>Bla</div>
+      <div className={'w-full'} ref={refContainer}></div>
+    </div>
   );
 }
 
